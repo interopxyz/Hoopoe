@@ -5,9 +5,9 @@ using System.Linq;
 
 using Rg = Rhino.Geometry;
 
-using Wg = Wind.Graphics;
+using Wg = Aviary.Wind.Graphics;
 
-namespace Hoopoe
+namespace Aviary.Hoopoe
 {
     public static class GeometryToMedia
     {

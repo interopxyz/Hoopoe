@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Wind.Graphics;
+
 using Rh = Rhino.Geometry;
 
-namespace Hoopoe
+using Aviary.Wind.Graphics;
+
+namespace Aviary.Hoopoe
 {
     public class Drawing
     {

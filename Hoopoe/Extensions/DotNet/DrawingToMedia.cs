@@ -1,12 +1,11 @@
-﻿using Rg = Rhino.Geometry;
-using Sw = System.Windows;
-using Sm = System.Windows.Media;
-using Sh = System.Windows.Shapes;
-using System.Linq;
-using Wind;
-using Wg = Wind.Graphics;
+﻿using Sm = System.Windows.Media;
 
-namespace Hoopoe
+using Rg = Rhino.Geometry;
+
+using Aviary.Wind;
+using Wg = Aviary.Wind.Graphics;
+
+namespace Aviary.Hoopoe
 {
     public static class DrawingToMedia
     {

@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Rg = Rhino.Geometry;
 
-using Wg = Wind.Graphics;
+using Wg = Aviary.Wind.Graphics;
 
-namespace Hoopoe
+namespace Aviary.Hoopoe
 {
     public static class GeometryToSVG
     {

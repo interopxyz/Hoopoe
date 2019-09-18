@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using Rg = Rhino.Geometry;
 
-
-namespace Hoopoe
+namespace Aviary.Hoopoe
 {
     public class Geometry
     {

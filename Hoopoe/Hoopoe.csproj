@@ -7,8 +7,8 @@
     <ProjectGuid>{650F2DD8-0497-44CB-84C1-C3AAD03265DD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Hoopoe</RootNamespace>
-    <AssemblyName>Hoopoe</AssemblyName>
+    <RootNamespace>Aviary.Hoopoe</RootNamespace>
+    <AssemblyName>Aviary.Hoopoe</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>

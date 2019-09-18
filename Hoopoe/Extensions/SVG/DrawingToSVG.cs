@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-using Hp = Hoopoe;
-using Wg = Wind.Graphics;
 using Rg = Rhino.Geometry;
 
-namespace Hoopoe
+using Wg = Aviary.Wind.Graphics;
+using Hp = Aviary.Hoopoe;
+
+namespace Aviary.Hoopoe
 {
     public static class DrawingToSVG
     {
@@ -32,6 +30,7 @@ namespace Hoopoe
             {
                 drawing += shape.ToPath();
                 if (!graphics.ContainsKey(shape.Graphic.ID)) graphics.Add(shape.Graphic.ID, shape.Graphic);
+
                 if (shape.Graphic.Effects.HasEffects)
                 {
                     if (!effects.ContainsKey(shape.Graphic.Effects.ID))
@@ -53,7 +52,7 @@ namespace Hoopoe
 
             foreach(Wg.Graphic graphic in graphics.Values)
             {
-                drawing += graphic.ToSVGclass();
+                drawing += graphic.ToSVG();
             }
 
             drawing += "</defs>" + Environment.NewLine;
@@ -72,9 +71,15 @@ namespace Hoopoe
                 string path = geo.ToSVG();
                 paths += (Environment.NewLine + path);
             }
-            paths += "\""+Environment.NewLine+ "class=\"cls-" + input.Graphic.ID + "\"" + Environment.NewLine;
-            if (input.Graphic.Effects.HasEffects) paths += "filter = \"url(#" + input.Graphic.Effects.ID + ")\"" + Environment.NewLine;
 
+            paths += "\"" + Environment.NewLine + "class=\"cls-" + input.Graphic.Stroke.ID;
+            if (input.Graphic.Fill.FillType == Wg.Fill.FillTypes.Solid) { paths += " cls-" + input.Graphic.Fill.ID; }
+            paths += "\"" + Environment.NewLine;
+            if (input.Graphic.Effects.HasEffects) paths += "filter = \"url(#" + input.Graphic.Effects.ID + ")\"" + Environment.NewLine;
+            if((input.Graphic.Fill.FillType == Wg.Fill.FillTypes.LinearGradient)||(input.Graphic.Fill.FillType == Wg.Fill.FillTypes.RadialGradient))
+            {
+                paths+="fill=\"url(#" + input.Graphic.Fill.ID + ")\"";
+            }
             paths += " />" + Environment.NewLine;
 
             return paths;
