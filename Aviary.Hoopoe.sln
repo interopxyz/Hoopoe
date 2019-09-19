@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.329
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aviary.Hoopoe", "Aviary.Hoopoe.csproj", "{F7AF1A24-ADE1-47A8-88C6-17FF9941A54D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Referenced", "Referenced", "{E7520C41-78A2-4F38-9278-4970CD485C07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aviary.Wind", "..\Aviary.Wind\Aviary.Wind.csproj", "{1DCF2E8C-B3E6-4BB9-AEDB-AE0E1D4AF9F4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F7AF1A24-ADE1-47A8-88C6-17FF9941A54D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7AF1A24-ADE1-47A8-88C6-17FF9941A54D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7AF1A24-ADE1-47A8-88C6-17FF9941A54D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7AF1A24-ADE1-47A8-88C6-17FF9941A54D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DCF2E8C-B3E6-4BB9-AEDB-AE0E1D4AF9F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DCF2E8C-B3E6-4BB9-AEDB-AE0E1D4AF9F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DCF2E8C-B3E6-4BB9-AEDB-AE0E1D4AF9F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DCF2E8C-B3E6-4BB9-AEDB-AE0E1D4AF9F4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1DCF2E8C-B3E6-4BB9-AEDB-AE0E1D4AF9F4} = {E7520C41-78A2-4F38-9278-4970CD485C07}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C4F8AC7E-E67B-47DD-9B26-F5D980C0F7EF}
+	EndGlobalSection
+EndGlobal
