@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aviary.Hoopoe", "Aviary.Hoopoe.csproj", "{F7AF1A24-ADE1-47A8-88C6-17FF9941A54D}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Referenced", "Referenced", "{E7520C41-78A2-4F38-9278-4970CD485C07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aviary.Wind", "..\Aviary.Wind\Aviary.Wind.csproj", "{1DCF2E8C-B3E6-4BB9-AEDB-AE0E1D4AF9F4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aviary.Hoopoe", "Aviary.Hoopoe\Aviary.Hoopoe.csproj", "{F7AF1A24-ADE1-47A8-88C6-17FF9941A54D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aviary.Wind", "..\Aviary.Wind\Aviary.Wind\Aviary.Wind.csproj", "{1DCF2E8C-B3E6-4BB9-AEDB-AE0E1D4AF9F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
