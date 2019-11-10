@@ -143,7 +143,7 @@ namespace Aviary.Hoopoe
 
         public override string ToString()
         {
-            return "Drawing (Shp:"+ Shapes.Count + " W:" + this.Width + " H:" + this.Height + ")";
+            return "Drawing (Shp:"+ Shapes.Count + " W:" + Math.Round(this.Width,2) + " H:" + Math.Round(this.Height,2) + ")";
         }
 
         #endregion

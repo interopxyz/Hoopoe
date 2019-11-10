@@ -6,6 +6,7 @@ using System.Linq;
 using Rg = Rhino.Geometry;
 
 using Wg = Aviary.Wind.Graphics;
+using System;
 
 namespace Aviary.Hoopoe
 {
@@ -168,7 +169,8 @@ namespace Aviary.Hoopoe
 
             arc.Point = input.EndPoint.ToWindowsPoint();
             arc.Size = new Sw.Size(input.Radius, input.Radius);
-            if (input.AngleDomain.IsIncreasing) { arc.SweepDirection = Sm.SweepDirection.Clockwise; } else { arc.SweepDirection = Sm.SweepDirection.Counterclockwise; }
+            if (Rg.Vector3d.VectorAngle(input.Plane.Normal,Rg.Vector3d.ZAxis)>0) { arc.SweepDirection = Sm.SweepDirection.Counterclockwise; } else { arc.SweepDirection = Sm.SweepDirection.Clockwise; }
+            arc.IsLargeArc = (input.Angle > Math.PI);
 
             segmentCollection.Add(arc);
             figure.Segments = segmentCollection;

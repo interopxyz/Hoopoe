@@ -28,27 +28,67 @@ namespace Aviary.Hoopoe
 
         public static string ToSVG(this Rg.Arc input)
         {
-            return "M " + input.StartPoint.ToSVG() + " A " + input.Radius + "," + input.Radius + " " + input.AngleDegrees + Convert.ToInt32(input.Angle > Math.PI) + "," + Convert.ToInt32(input.AngleDomain.T0 < input.AngleDomain.T1) + " " + input.EndPoint.ToSVG() + " ";
+            return "M " + input.StartPoint.ToSVG() + " A " + input.Radius + "," + input.Radius + " " + input.AngleDegrees + " " + Convert.ToInt32(input.Angle > Math.PI) + "," +  Convert.ToInt32(!(Rg.Vector3d.VectorAngle(input.Plane.ZAxis, Rg.Vector3d.ZAxis)>0)) + " " + input.EndPoint.ToSVG() + " ";
         }
 
         public static string ToSVG(this Rg.Circle input)
         {
-            Rg.Curve curve = input.ToNurbsCurve();
-            return "M " + curve.PointAtStart.ToSVG() + "a " + input.Radius + ", " + input.Radius + " 0 1,0 " + input.Radius * (-2) + ", 0" + " a " + input.Radius + ", " + input.Radius + " 0 1,0 " + input.Radius * (2) + ", 0 ";
+            Rg.Vector3d axisX = input.Plane.XAxis;
+            axisX.Unitize();
+            axisX = axisX * input.Radius;
+
+            Rg.Vector3d axisY = input.Plane.YAxis;
+            axisY.Unitize();
+            axisY = axisY * input.Radius;
+
+            Rg.Point3d A = input.Plane.Origin + axisX;
+            Rg.Point3d B = input.Plane.Origin + axisY;
+
+            axisX.Reverse();
+            axisY.Reverse();
+
+            Rg.Point3d C = input.Plane.Origin + axisX;
+            Rg.Point3d D = input.Plane.Origin + axisY;
+
+            double radians = Rg.Vector3d.VectorAngle(input.Plane.YAxis, Rg.Vector3d.YAxis, Rg.Plane.WorldXY);
+            double degrees = 180.0 - (radians / Math.PI) * 180.0;
+            int flip = Convert.ToInt32(!(Rg.Vector3d.VectorAngle(input.Plane.ZAxis, Rg.Vector3d.ZAxis) > 1));
+
+            return "M " + A.ToSVG()
+                + " A " + input.Radius + ", " + input.Radius + " " + degrees + " 0," + flip + " " + B.ToSVG()
+                + " A " + input.Radius + ", " + input.Radius + " " + degrees + " 0," + flip + " " + C.ToSVG()
+                + " A " + input.Radius + ", " + input.Radius + " " + degrees + " 0," + flip + " " + D.ToSVG()
+                + " A " + input.Radius + ", " + input.Radius + " " + degrees + " 0," + flip + " " + A.ToSVG();
         }
 
         public static string ToSVG(this Rg.Ellipse input)
         {
-            Rg.Curve curve = input.ToNurbsCurve();
-            Rg.Point3d start = curve.PointAtStart;
-            Rg.Point3d mid = curve.PointAtNormalizedLength(0.5);
-            double radians = Rg.Vector3d.VectorAngle(Rg.Vector3d.XAxis, (curve.PointAtStart-input.Plane.Origin),Rg.Plane.WorldXY);
-            double degrees = radians / Math.PI * 180;
+            Rg.Vector3d axisX = input.Plane.XAxis;
+            axisX.Unitize();
+            axisX = axisX * input.Radius1;
 
-            return "M " + start.ToSVG() 
-                + " A " + input.Radius1 + ", " + input.Radius2 + " " + degrees + " 1,0 " + mid.ToSVG()
-                + " A " + input.Radius1 + ", " + input.Radius2 + " " + degrees + " 1,0 " + start.ToSVG()
-                + " ";
+            Rg.Vector3d axisY = input.Plane.YAxis;
+            axisY.Unitize();
+            axisY = axisY * input.Radius2;
+
+            Rg.Point3d A = input.Plane.Origin+axisX;
+            Rg.Point3d B = input.Plane.Origin + axisY;
+
+            axisX.Reverse();
+            axisY.Reverse();
+
+            Rg.Point3d C = input.Plane.Origin + axisX;
+            Rg.Point3d D = input.Plane.Origin + axisY;
+
+            double radians = Rg.Vector3d.VectorAngle(input.Plane.YAxis, Rg.Vector3d.YAxis, Rg.Plane.WorldXY);
+            double degrees = 180.0-(radians / Math.PI) * 180.0;
+            int flip = Convert.ToInt32(!(Rg.Vector3d.VectorAngle(input.Plane.ZAxis, Rg.Vector3d.ZAxis) > 1));
+
+            return "M " + A.ToSVG() 
+                + " A " + input.Radius1 + ", " + input.Radius2 + " " + degrees + " 0,"+ flip + " " + B.ToSVG()
+                + " A " + input.Radius1 + ", " + input.Radius2 + " " + degrees + " 0,"+ flip + " " + C.ToSVG()
+                + " A " + input.Radius1 + ", " + input.Radius2 + " " + degrees + " 0,"+ flip + " " + D.ToSVG()
+                + " A " + input.Radius1 + ", " + input.Radius2 + " " + degrees + " 0,"+ flip + " " + A.ToSVG();
         }
 
         public static string ToSVG(this Rg.Polyline input)
